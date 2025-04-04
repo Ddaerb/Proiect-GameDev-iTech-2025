@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 6f;
 
     [Header("Jump Settings")]
-    public float jumpForce = 250f;
+    public float jumpForce = 120f;
     public float groundCheckDistance = 0.3f;
     public float fallMultiplier = 4f;
 
