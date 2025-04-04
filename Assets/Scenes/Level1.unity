@@ -1256,11 +1256,30 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &543685174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9067570745608871826, guid: 9d492e1534f41a740907cf1697cf0fad, type: 3}
+  m_PrefabInstance: {fileID: 4506435013541621002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543685175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8547175828340720936, guid: 9d492e1534f41a740907cf1697cf0fad, type: 3}
   m_PrefabInstance: {fileID: 4506435013541621002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &543685177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543685174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c159a055ccf14b4e9aa3d99d69405d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectibleType: 0
+  _value: 10
 --- !u!1001 &618124627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2042,6 +2061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut_FinnTheFrog
       objectReference: {fileID: 0}
+    - target: {fileID: 356312684202434575, guid: c4c7fa33f52c6894e88a3072454ea778, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1133271939040311989, guid: c4c7fa33f52c6894e88a3072454ea778, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -2462,6 +2485,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 159653d1217ee484a84f6c40b923f1d3, type: 3}
   m_PrefabInstance: {fileID: 1459434278}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1470811356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470811358}
+  - component: {fileID: 1470811357}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1470811357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470811356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7da5ccf7286754c9cee87debb016b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1470811358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470811356}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1483493900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,7 +4022,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9067570745608871826, guid: 9d492e1534f41a740907cf1697cf0fad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543685177}
   m_SourcePrefab: {fileID: 100100000, guid: 9d492e1534f41a740907cf1697cf0fad, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -3966,3 +4036,4 @@ SceneRoots:
   - {fileID: 1483493901}
   - {fileID: 1215093610}
   - {fileID: 1670501131}
+  - {fileID: 1470811358}
