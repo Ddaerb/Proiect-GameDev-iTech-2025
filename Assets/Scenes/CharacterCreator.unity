@@ -1645,8 +1645,9 @@ MonoBehaviour:
   - {fileID: 2594361354719267624, guid: aa09f316d8625c04cbf21247aff94851, type: 3}
   _hats:
   - {fileID: 7295949674675253008, guid: f552459bd2de392438ce16ce3fd0c9fa, type: 3}
-  - {fileID: 919132149155446097, guid: c95db0ca4264f1b41b1b4d52bebcbbb9, type: 3}
-  - {fileID: 919132149155446097, guid: 01cc9a18e88939a4bbdfe091a5cd0632, type: 3}
+  - {fileID: 5682409812461199498, guid: f84c5a9da53b17f4fb9451521228cce2, type: 3}
+  - {fileID: 3290828436283154936, guid: 91bd147d32acc2d4081b5affc0c186cb, type: 3}
+  - {fileID: 4657190953769725318, guid: a7e4518903dc7414e86ccae06f762511, type: 3}
   _nextCharButton: {fileID: 1878684733}
   _prevCharButton: {fileID: 1476218860}
   _nextHatButton: {fileID: 80946574}
@@ -2014,9 +2015,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pirate
-
-'
+  m_text: No hat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

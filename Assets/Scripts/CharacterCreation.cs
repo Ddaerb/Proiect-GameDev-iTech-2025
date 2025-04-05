@@ -47,8 +47,9 @@ public class CharacterCreation : MonoBehaviour
         _hatSizes = new Vector3[_hats.Length];
         // Set the hat sizes for each hat
         _hatSizes[0] = Vector3.zero;
-        _hatSizes[1] = new Vector3(0.01f, 0.01f, 0.01f);
-        _hatSizes[2] = new Vector3(0.003f, 0.002f, 0.003f);
+        _hatSizes[1] = new Vector3(0.02f, 0.02f, 0.02f);
+        _hatSizes[2] = new Vector3(0.01f, 0.01f, 0.01f);
+        _hatSizes[3] = new Vector3(0.03f, 0.03f, 0.03f);
     }
 
     private void PrevHatSelect()
@@ -122,7 +123,7 @@ public class CharacterCreation : MonoBehaviour
     {
         _hatNameText.text = _hats[_selectedHatIndex].name;
         _selectedHat = _hats[_selectedHatIndex];
-        _selectedHat.transform.localScale = _hatSizes[_selectedHatIndex];
+        //_selectedHat.transform.localScale = _hatSizes[_selectedHatIndex];
         _instantiatedHat = Instantiate(_selectedHat, hatTransform);
     }
 
