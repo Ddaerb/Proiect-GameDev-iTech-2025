@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4234983035056266762}
+  - component: {fileID: 250384840320572918}
   m_Layer: 0
   m_Name: FroggyHatTransform
   m_TagString: HatTransform
@@ -31,6 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3153923762285373994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &250384840320572918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872211427934903807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ce10dbf19410a49907ae1c2e72bec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &590122933730876766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39,6 +52,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f3ae58830a898f94a98b465b84f573d3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3ae58830a898f94a98b465b84f573d3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3ae58830a898f94a98b465b84f573d3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3ae58830a898f94a98b465b84f573d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -263,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 6
-  jumpForce: 250
+  jumpForce: 120
   groundCheckDistance: 0.3
   fallMultiplier: 4
   OnStartWalking:
@@ -278,6 +303,9 @@ MonoBehaviour:
   OnStopRunning:
     m_PersistentCalls:
       m_Calls: []
+  _cinemachineCamera: {fileID: 0}
+  autoFindCamera: 1
+  rb: {fileID: 6888023349289707991}
 --- !u!136 &1715838788082298294
 CapsuleCollider:
   m_ObjectHideFlags: 0

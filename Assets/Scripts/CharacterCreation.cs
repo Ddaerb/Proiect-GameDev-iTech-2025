@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterCreation : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CharacterCreation : MonoBehaviour
     [SerializeField] Button _prevCharButton;
     [SerializeField] Button _nextHatButton;
     [SerializeField] Button _prevHatButton;
+    [SerializeField] Button _createCharButton;
     [SerializeField] TextMeshProUGUI _characterNameText;
     [SerializeField] TextMeshProUGUI _hatNameText;
 
@@ -22,6 +24,11 @@ public class CharacterCreation : MonoBehaviour
     private int _selectedCharacterIndex = 0;
     private int _selectedHatIndex = 0;
 
+    public GameObject InstantiatedCharacter
+    {
+        get => _instantiatedCharacter;
+    }
+
 
     private void Awake()
     {
@@ -30,6 +37,8 @@ public class CharacterCreation : MonoBehaviour
         _prevCharButton.onClick.AddListener(PrevCharacterSelect);
         _nextHatButton.onClick.AddListener(NextHatSelect);
         _prevHatButton.onClick.AddListener(PrevHatSelect);
+        _createCharButton.onClick.AddListener(CreateCharacter);
+
 
         // Update the character name text to the first character in the array
         _characterNameText.text = _characters[_selectedCharacterIndex].name;
@@ -138,5 +147,13 @@ public class CharacterCreation : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void CreateCharacter()
+    {
+        // Save the created character in the gamemanager singleton class
+        // Transform hatTransform = FindFirstObjectByType<FindHatTransform>().transform;
+        GameManager.Instance.SaveCharacter(_selectedCharacter, _selectedHat);
+        SceneManager.LoadScene(1);
     }
 }
