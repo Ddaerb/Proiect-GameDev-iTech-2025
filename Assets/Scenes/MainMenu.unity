@@ -353,6 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da4dc7f3ab539d479dabaf9f08beab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleTree: {fileID: 9197481963319205126, guid: 90b2faff57436994c9f92be754891c83, type: 3}
+  mainTree: {fileID: 9197481963319205126, guid: 8c2f9997778f20d418b0ef5d43b1be3d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
