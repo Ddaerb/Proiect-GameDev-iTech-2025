@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine; // Using the new Cinemachine namespace
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,11 @@ public class PlayerMovement : MonoBehaviour
     public UnityEvent OnStartRunning;
     public UnityEvent OnStopRunning;
 
-    private Rigidbody rb;
+    [Header("Cinemachine")]
+    [SerializeField] private CinemachineCamera _cinemachineCamera;
+    [SerializeField] private bool autoFindCamera = true;
+
+    [SerializeField] Rigidbody rb;
     private PlayerInput playerInput;
     private Animator animator;
     private Vector2 moveInput;
@@ -30,12 +35,36 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+
+        // Set up Cinemachine camera
+        SetupCinemachineCamera();
 
         jumpAction = playerInput.actions["Jump"];
         jumpAction.performed += ctx => TryJump();
+    }
+
+    void SetupCinemachineCamera()
+    {
+        // If no camera is assigned and auto-find is enabled, try to find one
+        if (_cinemachineCamera == null && autoFindCamera)
+        {
+            _cinemachineCamera = FindObjectOfType<CinemachineCamera>();
+
+            if (_cinemachineCamera == null)
+            {
+                Debug.LogWarning("No CinemachineCamera found in the scene");
+                return;
+            }
+        }
+
+        // Set the camera's follow target
+        if (_cinemachineCamera != null)
+        {
+            _cinemachineCamera.Follow = transform;
+            _cinemachineCamera.LookAt = transform;
+        }
     }
 
     void Update()
@@ -105,11 +134,21 @@ public class PlayerMovement : MonoBehaviour
 
     void TryJump()
     {
+        if (rb == null)
+            return;
+
         if (isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("Jump");
         }
+    }
+
+    // Clean up input action when destroyed
+    void OnDestroy()
+    {
+        if (jumpAction != null)
+            jumpAction.performed -= ctx => TryJump();
     }
 }
