@@ -154,6 +154,6 @@ public class CharacterCreation : MonoBehaviour
         // Save the created character in the gamemanager singleton class
         // Transform hatTransform = FindFirstObjectByType<FindHatTransform>().transform;
         GameManager.Instance.SaveCharacter(_selectedCharacter, _selectedHat);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Level1");
     }
 }
