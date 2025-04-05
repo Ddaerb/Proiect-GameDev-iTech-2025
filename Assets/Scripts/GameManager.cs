@@ -43,6 +43,5 @@ public class GameManager : MonoBehaviour
     {
         _player = createdCharacter;
         _hat = selectedHat;
-        _player.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 }
