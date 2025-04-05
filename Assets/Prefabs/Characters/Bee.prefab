@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8478152231334471174}
   m_Layer: 0
-  m_Name: HatTransform
-  m_TagString: Untagged
+  m_Name: BeeHatTransform
+  m_TagString: HatTransform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 404257311286648436, guid: 4f95fc3a629c34149afa48a275d1808e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0034
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4f95fc3a629c34149afa48a275d1808e, type: 3}
       propertyPath: m_Name
       value: Bee
@@ -86,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4f95fc3a629c34149afa48a275d1808e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f95fc3a629c34149afa48a275d1808e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 4f95fc3a629c34149afa48a275d1808e, type: 3}
       propertyPath: m_Controller
