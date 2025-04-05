@@ -1,31 +1,51 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System;
 
 public class MainMenuLogic : MonoBehaviour
 {
     private UIDocument UIDoc;
     [SerializeField] private VisualTreeAsset titleTree, mainTree;
+    private VisualElement titleAsset, mainMenuAsset;
+    private byte state = 0; // 0 for title card, 1 for main menu
 
     private Button playGameButton, settingsButton, quitButton;
 
     void Awake() 
     {
+        titleAsset = titleTree.Instantiate();
+        mainMenuAsset = mainTree.Instantiate();
+
         UIDoc = GetComponent<UIDocument>();
-        UIDoc.rootVisualElement = titleTree;
-        UIDoc.RegisterCallback<KeyDownEvent>(OnKeyDown);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Update() 
     {
-        
-    }
+        if(Input.anyKeyDown && state == 0) 
+        {
+            Debug.Log("bruh");
+            // Switch to the main menu
+            titleAsset.RemoveFromHierarchy();
+            UIDoc.rootVisualElement.Add(mainMenuAsset);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // Get buttons
+            playGameButton = UIDoc.rootVisualElement.Q<Button>("PlayGame");
+            settingsButton = UIDoc.rootVisualElement.Q<Button>("Settings");
+            quitButton = UIDoc.rootVisualElement.Q<Button>("QuitGame");
+
+            // Ensure buttons are found
+            if (playGameButton != null && settingsButton != null && quitButton != null) 
+            {
+                // Register actions to buttons
+                playGameButton.RegisterCallback<MouseUpEvent>((evt) => LoadGame());
+                settingsButton.RegisterCallback<MouseUpEvent>((evt) => OpenSettings());
+                quitButton.RegisterCallback<MouseUpEvent>((evt) => QuitGame());
+            }
+
+            // Change state to avoid re-triggering
+            state = 1;
+        }
     }
 
     // button actions
@@ -43,21 +63,4 @@ public class MainMenuLogic : MonoBehaviour
     {
         Application.Quit();
     };
-
-    // switches to main menu on key down and unregisters key down event
-    private void OnKeyDown(KeyDownEvent ev) 
-    {
-        UIDoc.rootVisualElement = mainTree;
-
-        playGameButton = UIDoc.rootVisualElement.Q("PlayGame");
-        settingsButton = UIDoc.rootVisualElement.Q("Settings");
-        quitButton = UIDoc.rootVisualElement.Q("QuitGame");
-
-        // registering actions to the main buttons
-        playGameButton.RegisterCallback<MouseUpEvent>((evt) => LoadGame);
-        settingsButton.RegisterCallback<MouseUpEvent>((evt) => OpenSettings);
-        quitButton.RegisterCallback<MouseUpEvent>((evt) => QuitGame);
-
-        UIDoc.UnregisterCallback<KeyDownEvent>(OnKeyDown);
-    }
 }
