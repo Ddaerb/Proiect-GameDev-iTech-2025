@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         // If no camera is assigned and auto-find is enabled, try to find one
         if (_cinemachineCamera == null && autoFindCamera)
         {
-            _cinemachineCamera = FindObjectOfType<CinemachineCamera>();
+            _cinemachineCamera = FindFirstObjectByType<CinemachineCamera>();
 
             if (_cinemachineCamera == null)
             {
