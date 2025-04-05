@@ -1,13 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
+
+public enum CollectibleType
+{
+    Pizza,
+    Icecream
+}
 
 public class Collectible : MonoBehaviour
-{
-    private enum CollectibleType
-    {
-        Pizza,
-        Icecream
-    }
-
+{ 
     [SerializeField] private CollectibleType _collectibleType;
     [SerializeField] private int _value = 1;
 
@@ -15,7 +16,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.AddScore(_value);
+            CollectibleManager.Instance.AddScore(_value, _collectibleType);
             // Destroy the collectible item
             Destroy(gameObject);
         }
