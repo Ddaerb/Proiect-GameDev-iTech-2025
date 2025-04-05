@@ -6,23 +6,25 @@ using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour
 {
-    public Button startButton, settingsButton, backButton, quitButton;
-    public GameObject SettingsSubmenu;
-    public GameObject TitleCard, MainMenuScreen;
-    public Text splashText;
+    [SerializeField] private Button startButton, settingsButton, backButton, quitButton;
+    [SerializeField] private GameObject SettingsSubmenu;
+    [SerializeField] private GameObject TitleCard, MainMenuObject, MainMenuDisplayData, LoadingText;
+    [SerializeField] private Text splashText;
 
     private byte state = 0; // 0 for title card, 1 for main menu
+    private float loadingTimer = -1f; // set to 1 upon loading game
     private List<String> splashTextList = new List<String>();
 
     // button functions
     public void LoadGame() 
     {
-        SceneManager.LoadScene("CharacterCreator");
+        MainMenuDisplayData.SetActive(false);
+        LoadingText.SetActive(true);
+        loadingTimer = 1f; // starts loading timer
     }
     
     public void OpenSettings() 
     {
-        Debug.Log("cuh");
         SettingsSubmenu.SetActive(true);
         startButton.interactable = false;
         settingsButton.interactable = false;
@@ -31,7 +33,6 @@ public class MainMenu : MonoBehaviour
 
     public void CloseSettings() 
     {
-        Debug.Log("bruh");
         SettingsSubmenu.SetActive(false);
         startButton.interactable = true;
         settingsButton.interactable = true;
@@ -56,8 +57,16 @@ public class MainMenu : MonoBehaviour
         if(Input.anyKeyDown && state == 0) 
         {
             TitleCard.SetActive(false);
-            MainMenuScreen.SetActive(true);
+            MainMenuObject.SetActive(true);
             state = 1;
+        }
+        if(loadingTimer > 0f) 
+        {
+            loadingTimer -= Time.deltaTime;
+        }
+        else if(loadingTimer != -1f) // loading timer has finished
+        {
+            SceneManager.LoadScene("CharacterCreator");
         }
     }
 }
