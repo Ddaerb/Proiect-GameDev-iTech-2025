@@ -12,16 +12,54 @@ public class MainMenuLogic : MonoBehaviour
 
     private Button playGameButton, settingsButton, quitButton;
 
+    // button actions
+    Action LoadGame = () => 
+    {
+        SceneManager.LoadScene("Level1");
+    };
+
+    Action OpenSettings = () => 
+    {
+        Debug.Log("no settings lmfao");
+    };
+
+    Action QuitGame = () => 
+    {
+        Application.Quit();
+    };
+
+
     void Awake() 
     {
         titleAsset = titleTree.Instantiate();
         mainMenuAsset = mainTree.Instantiate();
 
         UIDoc = GetComponent<UIDocument>();
+
+        
     }
 
-    void Update() 
+    void Start() 
     {
+        playGameButton = UIDoc.rootVisualElement.Q<Button>("PlayGame");
+            settingsButton = UIDoc.rootVisualElement.Q<Button>("Settings");
+            quitButton = UIDoc.rootVisualElement.Q<Button>("QuitGame");
+
+            // Ensure buttons are found
+            if (playGameButton != null && settingsButton != null && quitButton != null) 
+            {
+                Debug.Log("suiii");
+                // Register actions to buttons
+                playGameButton.RegisterCallback<MouseUpEvent>((evt) => LoadGame());
+                settingsButton.RegisterCallback<MouseUpEvent>((evt) => OpenSettings());
+                quitButton.RegisterCallback<MouseUpEvent>((evt) => QuitGame());
+            }
+    }
+
+
+    void Update() 
+    {   
+        /*
         if(Input.anyKeyDown && state == 0) 
         {
             Debug.Log("bruh");
@@ -46,21 +84,7 @@ public class MainMenuLogic : MonoBehaviour
             // Change state to avoid re-triggering
             state = 1;
         }
+        */
+        
     }
-
-    // button actions
-    Action LoadGame = () => 
-    {
-        SceneManager.LoadScene("Level1");
-    };
-
-    Action OpenSettings = () => 
-    {
-        Debug.Log("no settings lmfao");
-    };
-
-    Action QuitGame = () => 
-    {
-        Application.Quit();
-    };
 }
