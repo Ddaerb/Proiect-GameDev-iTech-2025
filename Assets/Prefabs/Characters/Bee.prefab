@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f41257cceb8b46bf6bd53726f6abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  runSpeed: 6
+  walkSpeed: 1.7
+  runSpeed: 3.2
   jumpForce: 120
   groundCheckDistance: 0.3
   fallMultiplier: 4
@@ -365,4 +365,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbe5ea3ba4db5c4e8aa756a8e0110c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionUI: {fileID: 6582868778616523397, guid: 467b566cf7086f646abcc016a22b06aa, type: 3}
