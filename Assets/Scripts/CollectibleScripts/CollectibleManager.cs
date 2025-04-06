@@ -37,4 +37,29 @@ public class CollectibleManager : MonoBehaviour
             Debug.LogWarning($"Collectible type {type} not recognized.");
         }
     }
+
+    public int GetCollectibleCount(CollectibleType type)
+    {
+        if (_collectibleScores.ContainsKey(type))
+        {
+            return _collectibleScores[type];
+        }
+        return 0;
+    }
+
+    public void RemoveCrates(int amount)
+    {
+        if (_collectibleScores.ContainsKey(CollectibleType.Crate))
+        {
+            _collectibleScores[CollectibleType.Crate] = Mathf.Max(
+                0,
+                _collectibleScores[CollectibleType.Crate] - amount
+            );
+
+            UIManager.Instance.UpdateText(
+                _collectibleScores[CollectibleType.Crate],
+                CollectibleType.Crate
+            );
+        }
+    }
 }
