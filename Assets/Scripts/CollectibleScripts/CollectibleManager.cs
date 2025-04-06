@@ -37,4 +37,30 @@ public class CollectibleManager : MonoBehaviour
             Debug.LogWarning($"Collectible type {type} not recognized.");
         }
     }
+
+    public bool HasAnyCollectibles()
+    {
+        foreach (var score in _collectibleScores.Values)
+        {
+            if (score > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public CollectibleType? RemoveCollectible()
+    {
+        foreach (var kvp in _collectibleScores)
+        {
+            if (kvp.Value > 0)
+            {
+                _collectibleScores[kvp.Key]--;
+                UIManager.Instance.UpdateText(_collectibleScores[kvp.Key], kvp.Key);
+                return kvp.Key;
+            }
+        }
+        return null;
+    }
 }

@@ -116,7 +116,9 @@ public class UIManager : MonoBehaviour
                 // Implement attack logic here
                 break;
             case Options.Gift:
-                // Implement gift logic here
+                ToggleDialogue();
+                ToggleOptionMenu();
+                Gift();
                 break;
             case Options.Talk:
                 ToggleDialogue();
@@ -160,6 +162,36 @@ public class UIManager : MonoBehaviour
             playerInteraction.TogglePlayerMovement();
         }
     }
+
+    public void Gift()
+    {
+        StartCoroutine(GiftCoroutine());
+    }
+
+    private IEnumerator GiftCoroutine()
+    {
+        _dialogueText.text = "";
+        _dialogueText.gameObject.SetActive(true);
+        string dialogue = string.Empty;
+        CollectibleType? giftedType = CollectibleManager.Instance.RemoveCollectible();
+        if (giftedType.HasValue)
+        {
+            dialogue = $"You have given me a {giftedType}. I will help you escape to freedom by giving you spaceship parts to repair your spaceship.";
+        }
+        else
+        {
+            dialogue = "You have nothing to gift.";
+        }
+
+        foreach (char letter in dialogue)
+            {
+                _dialogueText.text += letter;
+                yield return new WaitForSeconds(_talkSpeed);
+            }
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        ToggleDialogue();
+    }
+
 
     public void ShowDialogue(string dialogueLine)
     {
