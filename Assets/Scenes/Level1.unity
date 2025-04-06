@@ -11035,13 +11035,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2800000, guid: 861a0e9cc4388a2409ca1ea82d1d0e09, type: 3}
+  - {fileID: 2800000, guid: 922065db2a0d0b041a620c03be805cb9, type: 3}
+  - {fileID: 2800000, guid: c2d51f3cf25264f4bb16debbf15d0c88, type: 3}
+  - {fileID: 2800000, guid: 080c18e56c853344a944f57f7ffc4357, type: 3}
+  - {fileID: 2800000, guid: 8429009b3131dcc4894056940fc4303a, type: 3}
   _itemCounts: 0000000000000000000000000000000000000000
-  _itemImage: {fileID: 187204431}
+  _itemImage: {fileID: 1934598054}
   _quantityText: {fileID: 1638213297}
   _selectionOptionIndicator: {fileID: 775877823}
   _optionUI: {fileID: 1046813090}
@@ -22448,7 +22448,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 400, y: 67.500015}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 48, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934598054
 MonoBehaviour:
