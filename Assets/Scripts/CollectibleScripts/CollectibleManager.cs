@@ -38,29 +38,28 @@ public class CollectibleManager : MonoBehaviour
         }
     }
 
-    public bool HasAnyCollectibles()
+    public int GetCollectibleCount(CollectibleType type)
     {
-        foreach (var score in _collectibleScores.Values)
+        if (_collectibleScores.ContainsKey(type))
         {
-            if (score > 0)
-            {
-                return true;
-            }
+            return _collectibleScores[type];
         }
-        return false;
+        return 0;
     }
 
-    public CollectibleType? RemoveCollectible()
+    public void RemoveCrates(int amount)
     {
-        foreach (var kvp in _collectibleScores)
+        if (_collectibleScores.ContainsKey(CollectibleType.Crate))
         {
-            if (kvp.Value > 0)
-            {
-                _collectibleScores[kvp.Key]--;
-                UIManager.Instance.UpdateText(_collectibleScores[kvp.Key], kvp.Key);
-                return kvp.Key;
-            }
+            _collectibleScores[CollectibleType.Crate] = Mathf.Max(
+                0,
+                _collectibleScores[CollectibleType.Crate] - amount
+            );
+
+            UIManager.Instance.UpdateText(
+                _collectibleScores[CollectibleType.Crate],
+                CollectibleType.Crate
+            );
         }
-        return null;
     }
 }
