@@ -38,10 +38,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void SaveCharacter(GameObject createdCharacter, GameObject selectedHat)
     {
         _player = createdCharacter;
         _hat = selectedHat;
+    }
+
+    public void TogglePlayerMovement()
+    {
+        if (_player != null)
+        {
+            PlayerMovement playerMovement = _player.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = !playerMovement.enabled;
+            }
+        }
     }
 }
