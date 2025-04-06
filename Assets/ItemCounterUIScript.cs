@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
-[ExecuteAlways]
 public class ItemCounterUIScript : MonoBehaviour
 {
     [SerializeField] private Texture _forcedTexture;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ShipCrateCollector : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class ShipCrateCollector : MonoBehaviour
     [SerializeField] private int requiredCrates = 3;
     [SerializeField] private float interactionRadius = 5f;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private string endingSceneName = "EndingCutScene";
 
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI interactText;
@@ -58,8 +60,23 @@ public class ShipCrateCollector : MonoBehaviour
 
             UpdateCrateText();
 
-            // Optional: Play sound/effects
-            // if (depositedCrates >= requiredCrates) MissionComplete();
+            // Check if all crates have been deposited
+            if (depositedCrates >= requiredCrates)
+            {
+                LoadEndingScene();
+            }
+        }
+    }
+
+    private void LoadEndingScene()
+    {
+        if (!string.IsNullOrEmpty(endingSceneName))
+        {
+            SceneManager.LoadScene(endingSceneName);
+        }
+        else
+        {
+            Debug.LogError("Ending scene name not set in ShipCrateCollector!");
         }
     }
 
@@ -69,9 +86,4 @@ public class ShipCrateCollector : MonoBehaviour
             crateCountText.text = $"{depositedCrates}/{requiredCrates}";
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, interactionRadius);
-    }
 }
