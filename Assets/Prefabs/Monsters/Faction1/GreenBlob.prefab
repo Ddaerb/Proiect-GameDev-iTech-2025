@@ -162,6 +162,8 @@ MonoBehaviour:
   patrolMode: 1
   waitTimeAtWaypoint: 1
   stoppingDistance: 1
+  detectionRadius: 5
+  rotationSpeed: 5
   patrolPoints: []
   centerPoint: {x: 0, y: 0, z: 0}
   patrolRadius: 10
