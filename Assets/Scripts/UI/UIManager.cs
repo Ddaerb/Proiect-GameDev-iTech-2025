@@ -215,6 +215,7 @@ public class UIManager : MonoBehaviour
         if (giftedType.HasValue)
         {
             dialogue = $"You have given me a {giftedType}. I will help you escape to freedom by giving you spaceship parts to repair your spaceship.";
+            CollectibleManager.Instance.AddScore(1, CollectibleType.Crate); // Assuming Crate is the spaceship part
         }
         else
         {
