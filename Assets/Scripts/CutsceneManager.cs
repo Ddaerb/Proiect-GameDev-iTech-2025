@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class SpriteCutsceneManager : MonoBehaviour
 {
@@ -58,6 +59,13 @@ public class SpriteCutsceneManager : MonoBehaviour
         isPlaying = true;
         displayImage.gameObject.SetActive(true);
         subtitleText.gameObject.SetActive(true);
+
+        if(SoundManager.Instance.musicSource != null && SoundManager.Instance.introMusic != null)
+        {
+            SoundManager.Instance.musicSource.clip = SoundManager.Instance.introMusic;
+            SoundManager.Instance.musicSource.loop = true;
+            SoundManager.Instance.musicSource.Play();
+        }
 
         // Show skip prompt after delay
         if (skipPrompt != null)
@@ -157,6 +165,7 @@ public class SpriteCutsceneManager : MonoBehaviour
 
     void LoadLevel1()
     {
+        EndCutscene();
         SceneManager.LoadScene("CharacterCreator");
     }
 
@@ -165,5 +174,11 @@ public class SpriteCutsceneManager : MonoBehaviour
         HideAllUI();
         isPlaying = false;
         isSkipping = false;
+
+        // Stop the intro sound
+        if (SoundManager.Instance.musicSource != null && SoundManager.Instance.musicSource)
+        {
+            SoundManager.Instance.musicSource.Stop();
+        }
     }
 }

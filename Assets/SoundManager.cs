@@ -5,12 +5,12 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [Header("Audio Sources")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
 
     [Header("Audio Clips")]
-    [SerializeField] AudioClip backgroundMusic;
-    [SerializeField] AudioClip _introMusic;
+    public AudioClip backgroundMusic;
+    public AudioClip introMusic;
 
     void Awake()
     {
@@ -33,9 +33,9 @@ public class SoundManager : MonoBehaviour
 
     private void PlayIntroMusic()
     {
-        if (_introMusic != null)
+        if (introMusic != null)
         {
-            musicSource.clip = _introMusic;
+            musicSource.clip = introMusic;
             musicSource.loop = false;
             musicSource.Play();
         }
