@@ -13,8 +13,8 @@ public class CharacterCreation : MonoBehaviour
     [SerializeField] Button _nextHatButton;
     [SerializeField] Button _prevHatButton;
     [SerializeField] Button _createCharButton;
-    [SerializeField] TextMeshProUGUI _characterNameText;
-    [SerializeField] TextMeshProUGUI _hatNameText;
+    [SerializeField] Text _characterNameText;
+    [SerializeField] Text _hatNameText;
 
     private Vector3[] _hatSizes;
     private GameObject _selectedCharacter;
@@ -32,7 +32,7 @@ public class CharacterCreation : MonoBehaviour
 
     private void Awake()
     {
-        // Add button events
+        // Addbutton events
         _nextCharButton.onClick.AddListener(NextCharacterSelect);
         _prevCharButton.onClick.AddListener(PrevCharacterSelect);
         _nextHatButton.onClick.AddListener(NextHatSelect);
