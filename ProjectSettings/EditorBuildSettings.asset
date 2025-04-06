@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: e820ec95d8ec2944ebfe452961767634
+  - enabled: 1
+    path: Assets/Scenes/MapEast.unity
+    guid: 47bfcda5106f8ec4bbed5a6e4a3d4351
+  - enabled: 1
+    path: Assets/Scenes/MapNorth.unity
+    guid: b3f9d951838654d40b3afd2403a612f0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
