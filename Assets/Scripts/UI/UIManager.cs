@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _selectionOptionIndicator;
     [SerializeField] private GameObject _optionUI;
     [SerializeField] private List<RectTransform> _options;
+    [SerializeField] private GameObject _dialogueUI;
+    [SerializeField] private TextMeshProUGUI _dialogueText;
+    private List<string> dialogues = new List<string>();
     private int _currentOptionIndex = 0;
+    private float _talkSpeed = 0.05f;
 
     private enum Options
     {
@@ -30,6 +35,7 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); // Keep this object alive across scenes.
+            PopulateDialogueLines();
         }
         else
         {
@@ -40,6 +46,15 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         HandleInput();
+    }
+
+    private void PopulateDialogueLines()
+    {
+        dialogues.Add("You want peace? I want parts. Maybe we both get lucky.");
+        dialogues.Add("Peace is like compost—it stinks at first, but it grows on you.");
+        dialogues.Add("Do not touch the glowing mushrooms. Not unless you want to relive your most awkward memories… in reverse.");
+        dialogues.Add("You smell like someone who’s never eaten engine grease. Fancy.");
+        dialogues.Add("Peace is hard. War is easy. Snacks are preferred.");
     }
 
     private void HandleInput()
@@ -85,6 +100,13 @@ public class UIManager : MonoBehaviour
 
     private void ExecuteOption()
     {
+        PlayerInteraction playerInteraction = FindObjectOfType<PlayerInteraction>();
+        if (playerInteraction == null)
+        {
+            Debug.LogWarning("PlayerInteraction script not found.");
+            return;
+        }
+
         switch ((Options)_currentOptionIndex)
         {
             case Options.Close:
@@ -97,7 +119,9 @@ public class UIManager : MonoBehaviour
                 // Implement gift logic here
                 break;
             case Options.Talk:
-                // Implement talk logic here
+                ToggleDialogue();
+                ToggleOptionMenu();
+                ShowDialogue(dialogues[Random.Range(0, dialogues.Count)]);
                 break;
             default:
                 Debug.LogWarning($"No action defined for option: {_currentOptionIndex}");
@@ -125,5 +149,33 @@ public class UIManager : MonoBehaviour
         {
             playerInteraction.TogglePlayerMovement();
         }
+    }
+
+    private void ToggleDialogue()
+    {
+        _dialogueUI.SetActive(!_dialogueUI.activeSelf);
+        PlayerInteraction playerInteraction = FindObjectOfType<PlayerInteraction>();
+        if (playerInteraction != null)
+        {
+            playerInteraction.TogglePlayerMovement();
+        }
+    }
+
+    public void ShowDialogue(string dialogueLine)
+    {
+        StartCoroutine(DisplayDialogue(dialogueLine));
+    }
+
+    private IEnumerator DisplayDialogue(string dialogueLine)
+    {
+        _dialogueText.text = "";
+        _dialogueText.gameObject.SetActive(true);
+        foreach (char letter in dialogueLine.ToCharArray())
+        {
+            _dialogueText.text += letter;
+            yield return new WaitForSeconds(_talkSpeed); // Adjust the duration as needed
+        }
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        ToggleDialogue();
     }
 }
