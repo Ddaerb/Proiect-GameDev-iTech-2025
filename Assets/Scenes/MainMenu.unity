@@ -2483,6 +2483,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 086b292bb409286479c8859b36f4df5b, type: 3}
     - target: {fileID: 3795167988782769225, guid: 887c6a4ff00c8d741a9cb635f3f4ffc7, type: 3}
+      propertyPath: mainGameMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 28c042707464347439661d47f4a0ebc1, type: 3}
+    - target: {fileID: 3795167988782769225, guid: 887c6a4ff00c8d741a9cb635f3f4ffc7, type: 3}
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 8300000, guid: 06414cfee0a0e1a4ba9660c765647712, type: 3}

@@ -48,10 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 4160506938282275070}
   sfxSource: {fileID: 3473177071410915462}
-  backgroundMusic: {fileID: 0}
-  introMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 06414cfee0a0e1a4ba9660c765647712, type: 3}
+  introMusic: {fileID: 8300000, guid: 25a73aa566910b64ca3b0a453a62338b, type: 3}
   jumpSound: {fileID: 8300000, guid: e22003111f8192a458e029fd6d81f16b, type: 3}
   npcSound: {fileID: 8300000, guid: 4194ea9d5132c354a94440ceb7747df3, type: 3}
+  collectibleSound: {fileID: 8300000, guid: bd95843070b6f154682a563315bc7ab6, type: 3}
+  gameStart: {fileID: 8300000, guid: 50bdf147ad9fbed4a880e4158078ac25, type: 3}
+  menuSelect: {fileID: 8300000, guid: 086b292bb409286479c8859b36f4df5b, type: 3}
 --- !u!82 &4160506938282275070
 AudioSource:
   m_ObjectHideFlags: 0
