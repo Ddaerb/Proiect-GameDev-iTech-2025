@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip introMusic;
     public AudioClip jumpSound;
     public AudioClip npcSound;
+    public AudioClip collectibleSound;
+    public AudioClip gameStart;
+    public AudioClip menuSelect;
 
     void Awake()
     {
@@ -30,7 +33,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        PlayMusic(backgroundMusic);
+        
     }
 
     private void PlayIntroMusic()

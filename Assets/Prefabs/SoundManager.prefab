@@ -51,6 +51,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 0}
   introMusic: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: e22003111f8192a458e029fd6d81f16b, type: 3}
+  npcSound: {fileID: 8300000, guid: 4194ea9d5132c354a94440ceb7747df3, type: 3}
 --- !u!82 &4160506938282275070
 AudioSource:
   m_ObjectHideFlags: 0

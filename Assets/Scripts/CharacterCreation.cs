@@ -47,6 +47,7 @@ public class CharacterCreation : MonoBehaviour
         _selectedCharacter = _characters[_selectedCharacterIndex];
         _instantiatedCharacter = Instantiate(_selectedCharacter, transform);
 
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.backgroundMusic);
         // Set the hat sizes
         SetHatSizes();
     }
@@ -76,6 +77,7 @@ public class CharacterCreation : MonoBehaviour
                 _selectedHatIndex--;
             }
             UpdateHat(hatTransform);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
         }
         else
         {
@@ -91,6 +93,7 @@ public class CharacterCreation : MonoBehaviour
             Destroy(_instantiatedHat);
             _selectedHatIndex = (_selectedHatIndex + 1) % _hats.Length;
             UpdateHat(hatTransform);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
         }
         else
         {
@@ -109,6 +112,7 @@ public class CharacterCreation : MonoBehaviour
         {
             _selectedCharacterIndex--;
         }
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
         UpdateCharacter();
     }
 
@@ -119,6 +123,7 @@ public class CharacterCreation : MonoBehaviour
         UpdateCharacter();
         Transform hatTransform = FindChildWithTag();
         UpdateHat(hatTransform);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
     }
 
     private void UpdateCharacter()
@@ -154,6 +159,7 @@ public class CharacterCreation : MonoBehaviour
         // Save the created character in the gamemanager singleton class
         // Transform hatTransform = FindFirstObjectByType<FindHatTransform>().transform;
         GameManager.Instance.SaveCharacter(_selectedCharacter, _selectedHat);
+        SoundManager.Instance.musicSource.Stop();
         SceneManager.LoadScene("Level1");
     }
 }

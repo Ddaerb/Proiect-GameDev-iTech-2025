@@ -38,6 +38,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.gameStart);
         MainMenuDisplayData.SetActive(false);
         LoadingText.SetActive(true);
         loadingTimer = loadingDelay; // Start loading countdown
@@ -45,12 +46,14 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.gameStart);
         SettingsSubmenu.SetActive(true);
         SetMainMenuButtonsInteractable(false);
     }
 
     public void CloseSettings()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.gameStart);
         SettingsSubmenu.SetActive(false);
         SetMainMenuButtonsInteractable(true);
     }

@@ -81,14 +81,17 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 MoveSelectionDown();
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 MoveSelectionUp();
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 ExecuteOption();
             }
         }
@@ -208,7 +211,7 @@ public class UIManager : MonoBehaviour
         _dialogueText.text = "";
         _dialogueText.gameObject.SetActive(true);
         string dialogue = string.Empty;
-        CollectibleType? giftedType = CollectibleManager.Instance.RemoveCollectible();
+        CollectibleType? giftedType = CollectibleManager.Instance.GetRandomNonCrateCollectible();
         if (giftedType.HasValue)
         {
             dialogue = $"You have given me a {giftedType}. I will help you escape to freedom by giving you spaceship parts to repair your spaceship.";
