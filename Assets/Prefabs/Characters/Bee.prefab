@@ -365,3 +365,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbe5ea3ba4db5c4e8aa756a8e0110c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionUI: {fileID: 6582868778616523397, guid: 467b566cf7086f646abcc016a22b06aa, type: 3}
