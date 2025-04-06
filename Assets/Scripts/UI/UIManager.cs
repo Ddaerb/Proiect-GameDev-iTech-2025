@@ -183,12 +183,14 @@ public class UIManager : MonoBehaviour
             dialogue = "You have nothing to gift.";
         }
 
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.npcSound);
         foreach (char letter in dialogue)
             {
                 _dialogueText.text += letter;
                 yield return new WaitForSeconds(_talkSpeed);
             }
         yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        SoundManager.Instance.StopLoopingSFX();
         ToggleDialogue();
     }
 
@@ -202,12 +204,14 @@ public class UIManager : MonoBehaviour
     {
         _dialogueText.text = "";
         _dialogueText.gameObject.SetActive(true);
+        SoundManager.Instance.PlayLoopingSFX(SoundManager.Instance.npcSound);
         foreach (char letter in dialogueLine.ToCharArray())
         {
             _dialogueText.text += letter;
             yield return new WaitForSeconds(_talkSpeed); // Adjust the duration as needed
         }
         yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        SoundManager.Instance.StopLoopingSFX();
         ToggleDialogue();
     }
 }

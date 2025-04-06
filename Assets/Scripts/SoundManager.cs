@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip backgroundMusic;
     public AudioClip introMusic;
+    public AudioClip jumpSound;
+    public AudioClip npcSound;
 
     void Awake()
     {
