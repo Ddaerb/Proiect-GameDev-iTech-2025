@@ -154,6 +154,22 @@ public class UIManager : MonoBehaviour
                 _itemCounts[0] = value;
                 if (_itemIndex == 0) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
                 break;
+            case CollectibleType.Jar:
+                _itemCounts[1] = value;
+                if (_itemIndex == 1) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
+                break;
+            case CollectibleType.KeyCard:
+                _itemCounts[2] = value;
+                if (_itemIndex == 2) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
+                break;
+            case CollectibleType.Sphere:
+                _itemCounts[3] = value;
+                if (_itemIndex == 3) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
+                break;
+            case CollectibleType.Pizza:
+                _itemCounts[4] = value;
+                if (_itemIndex == 4) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
+                break;
             default:
                 Debug.LogWarning($"No UI element for collectible type: {type}");
                 break;
