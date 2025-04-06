@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ChangeIndex(int offset) 
+    private void ChangeIndex(int offset) 
     {
         if (_itemIndex + offset < 0) { _itemIndex = _images.Length - 1; }
         else if (_itemIndex + offset > _images.Length - 1) { _itemIndex = 0; }
@@ -120,6 +120,9 @@ public class UIManager : MonoBehaviour
         _itemImage.texture = _images[_itemIndex];
         _quantityText.text = _itemCounts[_itemIndex].ToString();
     }
+
+    public void GoLeft() { ChangeIndex(-1); }
+    public void GoRight() { ChangeIndex(1); }
 
     public void UpdateText(int value, CollectibleType type)
     {
