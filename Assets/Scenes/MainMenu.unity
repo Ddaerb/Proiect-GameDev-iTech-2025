@@ -2373,6 +2373,7 @@ MonoBehaviour:
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
+  _introMusic: {fileID: 8300000, guid: 25a73aa566910b64ca3b0a453a62338b, type: 3}
 --- !u!4 &1852686931
 Transform:
   m_ObjectHideFlags: 0
