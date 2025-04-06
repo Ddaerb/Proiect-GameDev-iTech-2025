@@ -141,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.jumpSound);
             animator.SetTrigger("Jump");
         }
     }

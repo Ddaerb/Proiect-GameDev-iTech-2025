@@ -30,6 +30,7 @@ public class CollectibleManager : MonoBehaviour
         {
             _collectibleScores[type] += value;
             Debug.Log($"Collected {type}: {_collectibleScores[type]}");
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.collectibleSound);
             UIManager.Instance.UpdateText(_collectibleScores[type], type);
         }
         else
@@ -45,6 +46,29 @@ public class CollectibleManager : MonoBehaviour
             return _collectibleScores[type];
         }
         return 0;
+    }
+
+    public CollectibleType? GetRandomNonCrateCollectible()
+    {
+        List<CollectibleType> nonCrateCollectibles = new List<CollectibleType>();
+
+        foreach (var kvp in _collectibleScores)
+        {
+            if (kvp.Key != CollectibleType.Crate && kvp.Value > 0)
+            {
+                nonCrateCollectibles.Add(kvp.Key);
+            }
+        }
+
+        if (nonCrateCollectibles.Count > 0)
+        {
+            CollectibleType selectedType = nonCrateCollectibles[Random.Range(0, nonCrateCollectibles.Count)];
+            _collectibleScores[selectedType]--;
+            UIManager.Instance.UpdateText(_collectibleScores[selectedType], selectedType);
+            return selectedType;
+        }
+
+        return null;
     }
 
     public void RemoveCrates(int amount)

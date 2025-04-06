@@ -81,14 +81,17 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 MoveSelectionDown();
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 MoveSelectionUp();
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                 ExecuteOption();
             }
         }
@@ -134,7 +137,9 @@ public class UIManager : MonoBehaviour
                 // Implement attack logic here
                 break;
             case Options.Gift:
-                // Implement gift logic here
+                ToggleDialogue();
+                ToggleOptionMenu();
+                Gift();
                 break;
             case Options.Talk:
                 ToggleDialogue();
@@ -196,6 +201,38 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void Gift()
+    {
+        StartCoroutine(GiftCoroutine());
+    }
+
+    private IEnumerator GiftCoroutine()
+    {
+        _dialogueText.text = "";
+        _dialogueText.gameObject.SetActive(true);
+        string dialogue = string.Empty;
+        CollectibleType? giftedType = CollectibleManager.Instance.GetRandomNonCrateCollectible();
+        if (giftedType.HasValue)
+        {
+            dialogue = $"You have given me a {giftedType}. I will help you escape to freedom by giving you spaceship parts to repair your spaceship.";
+        }
+        else
+        {
+            dialogue = "You have nothing to gift.";
+        }
+
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.npcSound);
+        foreach (char letter in dialogue)
+            {
+                _dialogueText.text += letter;
+                yield return new WaitForSeconds(_talkSpeed);
+            }
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        SoundManager.Instance.StopLoopingSFX();
+        ToggleDialogue();
+    }
+
+
     public void ShowDialogue(string dialogueLine)
     {
         StartCoroutine(DisplayDialogue(dialogueLine));
@@ -205,12 +242,14 @@ public class UIManager : MonoBehaviour
     {
         _dialogueText.text = "";
         _dialogueText.gameObject.SetActive(true);
+        SoundManager.Instance.PlayLoopingSFX(SoundManager.Instance.npcSound);
         foreach (char letter in dialogueLine.ToCharArray())
         {
             _dialogueText.text += letter;
             yield return new WaitForSeconds(_talkSpeed); // Adjust the duration as needed
         }
         yield return new WaitForSeconds(2f); // Wait for 2 seconds before hiding the dialogue
+        SoundManager.Instance.StopLoopingSFX();
         ToggleDialogue();
     }
 }

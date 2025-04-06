@@ -27,6 +27,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (collider.CompareTag("NPC"))
                 {
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.menuSelect);
                     UIManager.Instance.ToggleOptionMenu();
                 }
             }

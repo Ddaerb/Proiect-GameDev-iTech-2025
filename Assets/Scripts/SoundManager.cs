@@ -11,6 +11,11 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip backgroundMusic;
     public AudioClip introMusic;
+    public AudioClip jumpSound;
+    public AudioClip npcSound;
+    public AudioClip collectibleSound;
+    public AudioClip gameStart;
+    public AudioClip menuSelect;
 
     void Awake()
     {
@@ -28,7 +33,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        PlayMusic(backgroundMusic);
+        
     }
 
     private void PlayIntroMusic()
