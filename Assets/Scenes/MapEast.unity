@@ -47036,6 +47036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8583241973938609366, guid: 34a5069b9a3df914caac88abf8eb8ae3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8959381176077059692, guid: 34a5069b9a3df914caac88abf8eb8ae3, type: 3}
       propertyPath: m_Name
       value: Goleling (1)
