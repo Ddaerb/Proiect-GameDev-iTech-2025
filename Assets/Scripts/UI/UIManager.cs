@@ -8,8 +8,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    [SerializeField] private RawImage _pizzaImage;
-    [SerializeField] private TextMeshProUGUI _pizzaQuantityText;
+    [SerializeField] private Texture[] _images;
+    [SerializeField] private int[] _itemCounts;
+    [SerializeField] private RawImage _itemImage;
+    [SerializeField] private TextMeshProUGUI _quantityText;
     [SerializeField] private GameObject _selectionOptionIndicator;
     [SerializeField] private GameObject _optionUI;
     [SerializeField] private List<RectTransform> _options;
@@ -18,6 +20,7 @@ public class UIManager : MonoBehaviour
     private List<string> dialogues = new List<string>();
     private int _currentOptionIndex = 0;
     private float _talkSpeed = 0.05f;
+    private int _itemIndex;
 
     private enum Options
     {
@@ -41,7 +44,22 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate instance.
         }
+        _itemIndex = 0;
+        ChangeIndex(0); // initialising item
     }
+
+    private void ChangeIndex(int offset)
+    {
+        if (_itemIndex + offset < 0) { _itemIndex = _images.Length - 1; }
+        else if (_itemIndex + offset > _images.Length - 1) { _itemIndex = 0; }
+        else { _itemIndex += offset; }
+
+        _itemImage.texture = _images[_itemIndex];
+        _quantityText.text = _itemCounts[_itemIndex].ToString();
+    }
+
+    public void GoLeft() { ChangeIndex(-1); }
+    public void GoRight() { ChangeIndex(1); }
 
     private void Update()
     {
@@ -130,10 +148,11 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateText(int value, CollectibleType type)
     {
-        switch(type)
+        switch (type)
         {
-            case CollectibleType.Pizza:
-                _pizzaQuantityText.text = value.ToString();
+            case CollectibleType.Crate:
+                _itemCounts[0] = value;
+                if (_itemIndex == 0) { _quantityText.text = _itemCounts[_itemIndex].ToString(); }
                 break;
             default:
                 Debug.LogWarning($"No UI element for collectible type: {type}");
