@@ -50,6 +50,7 @@ public class SpriteCutsceneManager : MonoBehaviour
     {
         if (!isPlaying)
         {
+            SoundManager.Instance.PlayMusic(SoundManager.Instance.introMusic);
             StartCoroutine(PlayCutscene());
         }
     }
