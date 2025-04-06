@@ -8,6 +8,7 @@ public class SpawnCharacter : MonoBehaviour
         GameObject player = Instantiate(GameManager.Instance.Player, transform);
         player.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         Transform hatTransform = FindFirstObjectByType<FindHatTransform>().transform;
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.mainGameMusic);
         if (GameManager.Instance.Hat != null)
         {
             Instantiate(GameManager.Instance.Hat, hatTransform);

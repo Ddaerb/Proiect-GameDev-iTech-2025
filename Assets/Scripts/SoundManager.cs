@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource sfxSource;
 
     [Header("Audio Clips")]
+    public AudioClip mainGameMusic;
     public AudioClip backgroundMusic;
     public AudioClip introMusic;
     public AudioClip jumpSound;
