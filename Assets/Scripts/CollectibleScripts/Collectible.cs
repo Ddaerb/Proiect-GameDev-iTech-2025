@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 public enum CollectibleType
 {
-    Pizza,
-    Icecream
+    Crate,
+    Jar,
+    KeyCard,
+    Sphere,
+    Pizza
 }
 
 public class Collectible : MonoBehaviour
